@@ -56,12 +56,13 @@ button:focus-visible {
 
 /* Dnd-kit animation styles */
 .sortable-item {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property: transform, opacity, box-shadow, border-color;
+  transition: transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  will-change: transform;
 }
 
 .sortable-item.dragging {
   transition: none;
+  will-change: auto;
 }
 
 .sortable-item.placeholder {
@@ -69,6 +70,23 @@ button:focus-visible {
   border-style: dashed;
   background-color: #f0f9ff;
   border-color: #3b82f6;
+}
+
+.sortable-item.drag-over {
+  transform: scale(0.95);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.dragging-container {
+  will-change: transform;
+}
+
+.dragging-container.drag-over {
+  transform: scale(0.98);
+  border-color: #2563eb;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+  background-color: #dbeafe;
 }
 
 @media (prefers-color-scheme: light) {

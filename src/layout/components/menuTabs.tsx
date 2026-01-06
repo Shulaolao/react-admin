@@ -26,7 +26,7 @@ const menuItems = [
     children: [
       {
         label: '拖拽排序',
-        key: '/tools/dnd-kit-dragable',
+        key: '/tools/dnd-kit',
       }
     ],
   },
