@@ -106,7 +106,7 @@ const DraggableButton = ({
         x: gridAlignedTransform.x,
         y: gridAlignedTransform.y,
       };
-    }
+    } 
     return { x: 0, y: 0 };
   };
   
@@ -164,10 +164,6 @@ const DraggableGrid = () => {
       },
     }),
     useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 250,
-        tolerance: 5,
-      },
     })
   );
   

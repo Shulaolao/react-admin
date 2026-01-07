@@ -1,12 +1,13 @@
 import { Tabs } from "antd"
 import Kanban from "./components/sortable"
 import DraggableGrid from "./components/draggable"
+import Droppable from "./components/droppable"
 
 const tabItems = [
   {
-    key: 'sortable',
-    label: 'Sortable',
-    children: <Kanban />,
+    key: 'droppable',
+    label: 'Droppable',
+    children: <Droppable />
   },
   {
     key: 'draggable',
@@ -14,8 +15,9 @@ const tabItems = [
     children: <DraggableGrid />,
   },
   {
-    key: 'droppable',
-    label: 'Droppable',
+    key: 'sortable',
+    label: 'Sortable',
+    children: <Kanban />,
   },
 ]
 

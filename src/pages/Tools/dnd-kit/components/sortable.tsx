@@ -53,7 +53,7 @@ const SortableItem = ({ children, id, className, customStyle, tagColor, isDragOv
       {...attributes}
       {...listeners}
       className={twMerge(
-        `sortable-item p-4 mb-2 bg-white rounded-lg cursor-grab active:cursor-grabbing flex items-center text-black ${isDragging ? 'dragging border-2 border-blue-500' : 'border border-gray-200'} ${isOver || isDragOver ? 'ring-2 ring-blue-300 drag-over' : ''}`,
+        `sortable-item p-4 mb-2 bg-white rounded-lg cursor-grab active:cursor-grabbing flex items-center text-black select-none ${isDragging ? 'dragging border-2 border-blue-500' : 'border border-gray-200'} ${isOver || isDragOver ? 'ring-2 ring-blue-300 drag-over' : ''}`,
         className
       )}
     >
@@ -63,7 +63,7 @@ const SortableItem = ({ children, id, className, customStyle, tagColor, isDragOv
           style={{ backgroundColor: tagColor }}
         />
       )}
-      <span>{children}</span>
+      <span className='select-none'>{children}</span>
     </div>
   )
 }
@@ -179,10 +179,10 @@ const MultipleContainers = ({ containers }: { containers?: { label: string, tagC
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: {
-        delay: 100,
-        tolerance: 5,
-      },
+      // activationConstraint: {
+      //   delay: 100,
+      //   tolerance: 5,
+      // },
     }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
@@ -191,16 +191,16 @@ const MultipleContainers = ({ containers }: { containers?: { label: string, tagC
       },
     }),
     useSensor(MouseSensor, {
-      activationConstraint: {
-        delay: 100,
-        tolerance: 5,
-      },
+      // activationConstraint: {
+      //   delay: 100,
+      //   tolerance: 5,
+      // },
     }),
     useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 100,
-        tolerance: 5,
-      },
+      // activationConstraint: {
+      //   delay: 100,
+      //   tolerance: 5,
+      // },
     }),
   );
 
