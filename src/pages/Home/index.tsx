@@ -12,7 +12,7 @@ const Home = () => {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button className="p-2 rounded-xl border-2 border-border cursor-pointer" onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>

@@ -1,4 +1,9 @@
-import { Tabs } from "antd"
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from '@/components/ui/tabs'
 import Kanban from "./components/sortable"
 import DraggableGrid from "./components/draggable"
 import Droppable from "./components/droppable"
@@ -24,7 +29,20 @@ const tabItems = [
 const DndKit = () => {
   return (
     <>
-      <Tabs items={tabItems} />
+      <Tabs defaultValue="droppable">
+        <TabsList>
+          {tabItems.map((item) => (
+            <TabsTrigger key={item.key} value={item.key}>
+              {item.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {tabItems.map((item) => (
+          <TabsContent key={item.key} value={item.key}>
+            {item.children}
+          </TabsContent>
+        ))}
+      </Tabs>
     </>
   )
 }

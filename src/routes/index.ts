@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
-import Route1 from '../pages/Route1';
-import Route2 from '../pages/Route2';
+import Route1 from '../pages/Route/route1';
+import Route2 from '../pages/Route/route2';
 import Layout from '../layout';
 import DndKit from '../pages/Tools/dnd-kit/index';
 

@@ -11,8 +11,8 @@ const Droppable = ({ id, children, isOver }: { id: string; children?: React.Reac
 
   return <div ref={setNodeRef} className={`${id} relative flex justify-center items-center w-50 h-50 rounded-lg transition-all duration-200 ${
     isOver 
-      ? 'bg-blue-100 ring-2 ring-blue-500 shadow-lg scale-105' 
-      : 'bg-blue-50 border-2 border-dashed border-blue-300'
+      ? 'bg-primary/10 ring-2 ring-primary shadow-lg scale-105' 
+      : 'bg-primary/5 border-2 border-dashed border-primary/30'
   }`}>
     {children}
   </div>
@@ -30,8 +30,8 @@ const Draggable = ({ id }: { id: string }) => {
   });
 
   const style: React.CSSProperties = {
-    backgroundColor: '#60a5fa',
-    color: 'white',
+    backgroundColor: 'hsl(var(--primary))',
+    color: 'hsl(var(--primary-foreground))',
     transform: CSS.Translate.toString(transform),
     outline: 'none',
     opacity: isDragging ? 0.3 : 1,
@@ -105,8 +105,8 @@ const MultipleDroppable = () => {
   const draggableMarkup = <Draggable id='draggable-button' />;
 
   return (
-    <div className="h-[70vh] p-4 bg-gray-100">
-      <h1 className="text-black mb-4 text-2xl font-bold">Droppable 拖拽放置示例</h1>
+    <div className="h-[70vh] p-4 bg-muted/20">
+      <h1 className="text-foreground mb-4 text-2xl font-bold">Droppable 拖拽放置示例</h1>
       <DndContext
         sensors={sensors}
         onDragStart={handleDragStart}
@@ -119,15 +119,15 @@ const MultipleDroppable = () => {
             {isDragging && (dragStartParent === null || dragStartParent === 'originBox') ? (
               <button
                 style={{
-                  backgroundColor: '#60a5fa',
-                  color: 'white',
+                  backgroundColor: 'hsl(var(--primary))',
+                  color: 'hsl(var(--primary-foreground))',
                   cursor: 'grabbing',
                 }}
                 className="rounded-lg px-4 py-2 font-medium select-none shadow-2xl opacity-50"
               >
                 拖拽中
               </button>
-            ) : (parent === null || parent === 'originBox') ? draggableMarkup : <p className="text-gray-400">按钮已被拖走</p>}
+            ) : (parent === null || parent === 'originBox') ? draggableMarkup : <p className="text-muted-foreground">按钮已被拖走</p>}
           </Droppable>
           <div className="flex gap-4 h-full">
             <Droppable id='droppable-box1' isOver={overParent === 'droppable-box1'}>
@@ -135,8 +135,8 @@ const MultipleDroppable = () => {
                 isDragging && dragStartParent === 'droppable-box1' ? (
                   <button
                     style={{
-                      backgroundColor: '#60a5fa',
-                      color: 'white',
+                      backgroundColor: 'hsl(var(--primary))',
+                      color: 'hsl(var(--primary-foreground))',
                       cursor: 'grabbing',
                     }}
                     className="rounded-lg px-4 py-2 font-medium select-none shadow-2xl opacity-50"
@@ -144,7 +144,7 @@ const MultipleDroppable = () => {
                     拖拽中
                   </button>
                 ) : parent === 'droppable-box1' ? draggableMarkup
-                  : overParent === 'droppable-box1' ? <p className="text-gray-400">释放以放置</p> : null
+                  : overParent === 'droppable-box1' ? <p className="text-muted-foreground">释放以放置</p> : null
               }
             </Droppable>
             <Droppable id='droppable-box2' isOver={overParent === 'droppable-box2'}>
@@ -152,8 +152,8 @@ const MultipleDroppable = () => {
                 isDragging && dragStartParent === 'droppable-box2' ? (
                   <button
                     style={{
-                      backgroundColor: '#60a5fa',
-                      color: 'white',
+                      backgroundColor: 'hsl(var(--primary))',
+                      color: 'hsl(var(--primary-foreground))',
                       cursor: 'grabbing',
                     }}
                     className="rounded-lg px-4 py-2 font-medium select-none shadow-2xl opacity-50"
@@ -161,7 +161,7 @@ const MultipleDroppable = () => {
                     拖拽中
                   </button>
                 ) : parent === 'droppable-box2' ? draggableMarkup
-                  : overParent === 'droppable-box2' ? <p className="text-gray-400">释放以放置</p> : null
+                  : overParent === 'droppable-box2' ? <p className="text-muted-foreground">释放以放置</p> : null
               }
             </Droppable>
           </div>
@@ -169,8 +169,8 @@ const MultipleDroppable = () => {
         <DragOverlay>
           <button
             style={{
-              backgroundColor: '#60a5fa',
-              color: 'white',
+              backgroundColor: 'hsl(var(--primary))',
+              color: 'hsl(var(--primary-foreground))',
               cursor: 'grabbing',
             }}
             className="rounded-lg px-4 py-2 font-medium select-none shadow-2xl"

@@ -1,27 +1,65 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* 现代字体栈 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  
+  /* 基础配置 */
+  --radius: 0.5rem;
+  
+  /* Zinc 亮色主题 */
+  --background: 0 0% 100%; /* white */
+  --foreground: 240 10% 3.9%; /* zinc-950 */
+  
+  --card: 0 0% 100%; /* white */
+  --card-foreground: 240 10% 3.9%; /* zinc-950 */
+  
+  --popover: 0 0% 100%; /* white */
+  --popover-foreground: 240 10% 3.9%; /* zinc-950 */
+  
+  --primary: 240 5.9% 10%; /* zinc-900 */
+  --primary-foreground: 0 0% 98%; /* zinc-50 */
+  
+  --secondary: 240 4.8% 95.9%; /* zinc-100 */
+  --secondary-foreground: 240 5.9% 10%; /* zinc-900 */
+  
+  --muted: 240 4.8% 95.9%; /* zinc-100 */
+  --muted-foreground: 240 3.8% 46.1%; /* zinc-500 */
+  
+  --accent: 240 4.8% 95.9%; /* zinc-100 */
+  --accent-foreground: 240 5.9% 10%; /* zinc-900 */
+  
+  --destructive: 0 84.2% 60.2%; /* red-500 */
+  --destructive-foreground: 0 0% 98%; /* zinc-50 */
+  
+  --border: 240 5.9% 90%; /* zinc-200 */
+  --input: 240 5.9% 90%; /* zinc-200 */
+  --ring: 240 5.9% 10%; /* zinc-900 */
+  
+  --chart-1: 12 76% 61%; /* orange-500 */
+  --chart-2: 173 58% 39%; /* teal-600 */
+  --chart-3: 197 37% 24%; /* sky-800 */
+  --chart-4: 43 74% 66%; /* amber-400 */
+  --chart-5: 27 87% 67%; /* orange-400 */
+  
+  --sidebar-background: 0 0% 98%; /* zinc-50 */
+  --sidebar-foreground: 240 5.3% 26.1%; /* zinc-700 */
+  --sidebar-primary: 240 5.9% 10%; /* zinc-900 */
+  --sidebar-primary-foreground: 0 0% 98%; /* zinc-50 */
+  --sidebar-accent: 240 4.8% 95.9%; /* zinc-100 */
+  --sidebar-accent-foreground: 240 5.9% 10%; /* zinc-900 */
+  --sidebar-border: 240 5.9% 90%; /* zinc-200 */
+  --sidebar-ring: 240 5.9% 10%; /* zinc-900 */
 }
 
 body {
@@ -35,34 +73,149 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@theme inline {
+  /* 圆角大小 */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  
+  /* 颜色映射 */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-sidebar-background: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.dark {
+  /* Zinc 暗色主题 */
+  --background: 240 10% 3.9%; /* zinc-950 */
+  --foreground: 0 0% 98%; /* zinc-50 */
+  
+  --card: 240 10% 3.9%; /* zinc-950 */
+  --card-foreground: 0 0% 98%; /* zinc-50 */
+  
+  --popover: 240 10% 3.9%; /* zinc-950 */
+  --popover-foreground: 0 0% 98%; /* zinc-50 */
+  
+  --primary: 0 0% 98%; /* zinc-50 */
+  --primary-foreground: 240 5.9% 10%; /* zinc-900 */
+  
+  --secondary: 240 3.7% 15.9%; /* zinc-800 */
+  --secondary-foreground: 0 0% 98%; /* zinc-50 */
+  
+  --muted: 240 3.7% 15.9%; /* zinc-800 */
+  --muted-foreground: 240 5% 64.9%; /* zinc-400 */
+  
+  --accent: 240 3.7% 15.9%; /* zinc-800 */
+  --accent-foreground: 0 0% 98%; /* zinc-50 */
+  
+  --destructive: 0 62.8% 30.6%; /* red-900 */
+  --destructive-foreground: 0 0% 98%; /* zinc-50 */
+  
+  --border: 240 3.7% 15.9%; /* zinc-800 */
+  --input: 240 3.7% 15.9%; /* zinc-800 */
+  --ring: 240 4.9% 83.9%; /* zinc-300 */
+  
+  --chart-1: 220 70% 50%; /* blue-600 */
+  --chart-2: 160 60% 45%; /* teal-500 */
+  --chart-3: 30 80% 55%; /* orange-500 */
+  --chart-4: 280 65% 60%; /* purple-500 */
+  --chart-5: 340 75% 55%; /* rose-500 */
+  
+  --sidebar-background: 240 5.9% 10%; /* zinc-900 */
+  --sidebar-foreground: 240 4.8% 95.9%; /* zinc-100 */
+  --sidebar-primary: 0 0% 98%; /* zinc-50 */
+  --sidebar-primary-foreground: 240 5.9% 10%; /* zinc-900 */
+  --sidebar-accent: 240 3.7% 15.9%; /* zinc-800 */
+  --sidebar-accent-foreground: 0 0% 98%; /* zinc-50 */
+  --sidebar-border: 240 3.7% 15.9%; /* zinc-800 */
+  --sidebar-ring: 240 4.9% 83.9%; /* zinc-300 */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-  a:hover {
-    color: #747bff;
+  body {
+    @apply bg-background text-foreground;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  /* 美化滚动条 */
+  /* Webkit 浏览器（Chrome, Safari, Edge）*/
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 0; /* 隐藏横向滚动条 */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+  
+  /* Sidebar 专用滚动条样式 */
+  [data-sidebar="content"]::-webkit-scrollbar {
+    width: 6px;
+    height: 0; /* 隐藏横向滚动条 */
+  }
+  
+  [data-sidebar="content"]::-webkit-scrollbar-thumb {
+    background: hsl(var(--sidebar-border));
+    border-radius: 3px;
+  }
+  
+  [data-sidebar="content"]::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--sidebar-foreground) / 0.3);
+  }
+  
+  [data-sidebar="content"] {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--sidebar-border)) transparent;
   }
 }

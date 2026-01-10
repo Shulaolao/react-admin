@@ -18,12 +18,12 @@ interface Position {
 
 const Grid = ({ gridSize = 20 }: { gridSize?: number }) => {
   return (
-    <div className="rounded-lg border border-gray-200 overflow-hidden">
+    <div className="rounded-lg border border-border overflow-hidden">
       {/* 水平线 */}
       <div 
         className="absolute inset-0 w-full h-full" 
         style={{
-          backgroundImage: `linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)` ,
+          backgroundImage: `linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)` ,
           backgroundSize: `100% ${gridSize}px`,
         }}
       />
@@ -31,7 +31,7 @@ const Grid = ({ gridSize = 20 }: { gridSize?: number }) => {
       <div 
         className="absolute inset-0 w-full h-full" 
         style={{
-          backgroundImage: `linear-gradient(to right, #e5e7eb 1px, transparent 1px)` ,
+          backgroundImage: `linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px)` ,
           backgroundSize: `${gridSize}px 100%`,
         }}
       />
@@ -43,8 +43,8 @@ const Grid = ({ gridSize = 20 }: { gridSize?: number }) => {
             45deg,
             transparent,
             transparent 10px,
-            #f3f4f6 10px,
-            #f3f4f6 11px
+            hsl(var(--muted)) 10px,
+            hsl(var(--muted)) 11px
           )` ,
         }}
       />
@@ -117,8 +117,8 @@ const DraggableButton = ({
     left: `${position.x}px`,
     top: `${position.y}px`,
     transform: `translate3d(${currentTransform.x}px, ${currentTransform.y}px, 0)`,
-    backgroundColor: '#60a5fa',
-    color: 'white',
+    backgroundColor: 'hsl(var(--primary))',
+    color: 'hsl(var(--primary-foreground))',
     border: 'none',
     width: '240px',
     height: '120px',
@@ -246,15 +246,15 @@ const DraggableGrid = () => {
     >
       <div className="p-6 mx-auto">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2 text-white">可拖拽网格组件 (dnd-kit版)</h2>
-          <p className="text-gray-600 mb-4 text-white">基于 dnd-kit useDraggable Hook 实现的拖拽功能</p>
-          <div className="flex flex-wrap gap-4 items-center bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+          <h2 className="text-2xl font-bold text-foreground mb-2">可拖拽网格组件 (dnd-kit版)</h2>
+          <p className="text-muted-foreground mb-4">基于 dnd-kit useDraggable Hook 实现的拖拽功能</p>
+          <div className="flex flex-wrap gap-4 items-center bg-card p-4 rounded-lg shadow-sm border border-border">
             <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-gray-700">网格大小:</label>
+              <label className="text-sm font-medium text-foreground">网格大小:</label>
               <select 
                 value={gridSize}
                 onChange={(e) => handleGridSizeChange(Number(e.target.value))}
-                className="px-3 py-1 border border-gray-300 rounded-md text-sm text-black focus:outline-0 focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-1 border border-border rounded-md text-sm text-foreground focus:outline-0 focus:ring-2 focus:ring-primary"
               >
                 <option value={10}>10px</option>
                 <option value={20}>20px</option>
@@ -264,22 +264,22 @@ const DraggableGrid = () => {
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-gray-700">当前位置:</span>
-              <span className="px-2 py-1 bg-gray-100 rounded text-sm text-black">
+              <span className="text-sm font-medium text-foreground">当前位置:</span>
+              <span className="px-2 py-1 bg-muted rounded text-sm text-foreground">
                 X: {position.x}px, Y: {position.y}px
               </span>
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-gray-700">状态:</span>
-              <span className={`px-2 py-1 rounded text-sm ${isDragging ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'}`}>
+              <span className="text-sm font-medium text-foreground">状态:</span>
+              <span className={`px-2 py-1 rounded text-sm ${isDragging ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-muted text-muted-foreground'}`}>
                 {isDragging ? '拖拽中' : '空闲'}
               </span>
             </div>
           </div>
         </div>
         
-        <div className="relative bg-white w-full min-h-120 rounded-lg shadow-lg border border-gray-200 overflow-hidden draggable-container">
+        <div className="relative bg-card w-full min-h-120 rounded-lg shadow-lg border border-border overflow-hidden draggable-container">
           <Grid gridSize={gridSize} />
           <DraggableButton 
             position={position} 
@@ -303,8 +303,8 @@ const DraggableGrid = () => {
               <div 
                 className="rounded-lg px-4 py-2 font-medium select-none shadow-2xl"
                 style={{
-                  backgroundColor: '#3b82f6',
-                  color: 'white',
+                  backgroundColor: 'hsl(var(--primary))',
+                  color: 'hsl(var(--primary-foreground))',
                   minWidth: '240',
                   minHeight: '120px',
                   display: 'flex',
@@ -321,7 +321,7 @@ const DraggableGrid = () => {
           </DragOverlay>
         </div>
         
-        <div className="mt-4 text-sm text-gray-500 bg-gray-50 p-3 rounded-lg">
+        <div className="mt-4 text-sm text-muted-foreground bg-muted/30 p-3 rounded-lg">
           <p><strong>dnd-kit 版本特性:</strong></p>
           <ul className="list-disc list-inside mt-1 space-y-1">
             <li>使用官方 useDraggable Hook 实现</li>

@@ -53,7 +53,7 @@ const SortableItem = ({ children, id, className, customStyle, tagColor, isDragOv
       {...attributes}
       {...listeners}
       className={twMerge(
-        `sortable-item p-4 mb-2 bg-white rounded-lg cursor-grab active:cursor-grabbing flex items-center text-black select-none ${isDragging ? 'dragging border-2 border-blue-500' : 'border border-gray-200'} ${isOver || isDragOver ? 'ring-2 ring-blue-300 drag-over' : ''}`,
+        `sortable-item p-4 mb-2 bg-card rounded-lg cursor-grab active:cursor-grabbing flex items-center text-foreground select-none ${isDragging ? 'dragging border-2 border-primary' : 'border border-border'} ${isOver || isDragOver ? 'ring-2 ring-primary/30 drag-over' : ''}`,
         className
       )}
     >
@@ -115,12 +115,12 @@ const SortableContainer = ({
     <div
       ref={setNodeRef} 
       style={style}
-      className={`w-full max-w-md max-h-[80vh] mx-auto overflow-y-auto bg-gray-50 p-2 shadow-md rounded-lg select-none ${isDragging ? 'dragging-container border-2 border-blue-500' : 'border border-gray-200'} ${isDragOver ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+      className={`w-full max-w-md max-h-[80vh] mx-auto overflow-y-auto bg-muted/30 p-2 shadow-md rounded-lg select-none ${isDragging ? 'dragging-container border-2 border-primary' : 'border border-border'} ${isDragOver ? 'ring-2 ring-primary bg-primary/5' : ''}`}
     >
       <div className="flex justify-between items-center p-2 cursor-grab active:cursor-grabbing" {...attributes} {...listeners}>
-        <div className="text-lg font-semibold text-black">{title}</div>
+        <div className="text-lg font-semibold text-foreground">{title}</div>
       </div>
-      <div className="multiple-containers p-4 rounded-lg border border-gray-200" data-container-id={containerId}>
+      <div className="multiple-containers p-4 rounded-lg border border-border" data-container-id={containerId}>
         <SortableContext items={items}>
           {items.map((item) => (
             <SortableItem 
@@ -371,7 +371,7 @@ const MultipleContainers = ({ containers }: { containers?: { label: string, tagC
         </SortableContext>
         <DragOverlay>
           {activeId ? (
-            <div className={`max-h-[80vh] p-4 mb-2 bg-white rounded-lg cursor-grab active:cursor-grabbing flex items-center text-black border-2 border-blue-500 opacity-100 z-[9999] shadow-xl transform scale-105 ${containerData.some(c => c.id === activeId) ? 'w-full max-w-md min-h-[50vh]' : ''}`}>
+            <div className={`max-h-[80vh] p-4 mb-2 bg-card rounded-lg cursor-grab active:cursor-grabbing flex items-center text-foreground border-2 border-primary opacity-100 z-[9999] shadow-xl transform scale-105 ${containerData.some(c => c.id === activeId) ? 'w-full max-w-md min-h-[50vh]' : ''}`}>
               {(activeDragItem as Item)?.tagColor && (
                 <div 
                   className="w-3 h-3 rounded-full mr-2 flex-shrink-0" 
