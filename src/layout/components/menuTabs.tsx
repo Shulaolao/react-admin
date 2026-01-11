@@ -46,7 +46,11 @@ const menuItems = [
       {
         label: '拖拽排序',
         key: '/tools/dnd-kit',
-      }
+      },
+      {
+        label: '待办事项清单',
+        key: '/tools/todo-list',
+      },
     ],
   },
 ]
