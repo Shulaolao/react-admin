@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm run --parallel dev",
+    "dev:web": "pnpm --filter @ai-dialy/web dev",
+    "dev:server": "pnpm --filter @ai-dialy/server dev",
+    "build": "pnpm run --parallel build",
+    "build:web": "pnpm --filter @ai-dialy/web build",
+    "build:server": "pnpm --filter @ai-dialy/server build",
+    "lint": "pnpm run --parallel lint",
+    "clean": "pnpm -r exec rm -rf node_modules dist .next",
+    "typecheck": "pnpm -r exec tsc --noEmit"
   },
   "keywords": [],
   "author": "",
